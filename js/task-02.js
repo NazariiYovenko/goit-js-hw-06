@@ -8,7 +8,8 @@ const ingredients = [
 ];
 const list = document.querySelector("#ingredients");
 let elements = [];
-for (const ingredient of ingredients) {
+ingredients.map((el) => createLi(el));
+function createLi(ingredient) {
   const li = document.createElement("li");
   li.classList.add("item");
   li.textContent = ingredient;
