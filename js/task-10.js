@@ -18,12 +18,22 @@ function destroyBoxes() {
   boxStore.innerHTML = "";
 }
 
+function isInputValid() {
+  if (input.value > inputMax || input.value < inputMin) {
+    alert(`Write in range from ${inputMin} to ${inputMax}`);
+    input.value = 1;
+  }
+}
+
 const boxStore = document.querySelector("#boxes");
 const createButton = document.querySelector("[data-create]");
 const destroyButton = document.querySelector("[data-destroy]");
 const input = document.querySelector("#controls input");
+const inputMin = Number(input.getAttribute("min"));
+const inputMax = Number(input.getAttribute("max"));
 
 input.value = 1;
 
 createButton.addEventListener("click", () => createBoxes(input.value));
 destroyButton.addEventListener("click", () => destroyBoxes());
+input.addEventListener("input", () => isInputValid());
